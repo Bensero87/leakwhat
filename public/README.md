@@ -1,1 +1,0 @@
-Bu klasör, statik dosyalar için kullanılır.
