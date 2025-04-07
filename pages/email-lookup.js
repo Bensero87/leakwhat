@@ -1,74 +1,76 @@
-// pages/databases.js
+// pages/email-lookup.js
 
-import React from "react";
+import React, { useState } from "react";
+import { useRouter } from "next/router";
 
-const databases = [
-  {
-    name: "Alphamountain",
-    description:
-      "Get reputation scores for hosts, domains, and IP addresses to support your investigations.",
-  },
-  {
-    name: "Censys",
-    description:
-      "Monitor and analyze unknown internet assets and attack surfaces.",
-  },
-  {
-    name: "DNS Twist",
-    description:
-      "Identify and analyze potential phishing domains effectively.",
-  },
-  {
-    name: "Farsight DNSDB",
-    description:
-      "Access real-time and historical DNS data for threat intelligence.",
-  },
-  {
-    name: "Google Maps",
-    description:
-      "Normalize and enrich location data during your investigations.",
-  },
-  {
-    name: "Image Analyzer",
-    description:
-      "Detect faces, text, objects, and landmarks in image files.",
-  },
-  {
-    name: "PolySwarm",
-    description:
-      "Retrieve malware insights from file hashes, IPs, and domains.",
-  },
-  {
-    name: "Scamadviser",
-    description:
-      "Detect suspicious domains and scan scam networks quickly.",
-  },
-  {
-    name: "TinEye",
-    description:
-      "Perform reverse image searches for copyright and fraud detection.",
-  },
-];
+export default function EmailLookup() {
+  const [email, setEmail] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
+  const router = useRouter();
 
-export default function Databases() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!isChecked) {
+      alert("Please accept the Privacy Notice to continue.");
+      return;
+    }
+    // Geçici yönlendirme - Ödeme entegrasyonu sonrası güncellenecek
+    router.push("/payment");
+  };
+
   return (
-    <div className="min-h-screen bg-[#0a0f24] px-4 py-10">
-      <h1 className="text-white text-3xl font-bold text-center mb-10">
-        LeakWhat - Available Data Providers
-      </h1>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-        {databases.map((db, index) => (
-          <div
-            key={index}
-            className="bg-[#2d2f3a] p-6 rounded-2xl shadow-md border border-gray-700"
-          >
-            <h2 className="text-xl font-semibold text-white mb-2">
-              {db.name}
-            </h2>
-            <p className="text-gray-300">{db.description}</p>
+    <div className="min-h-screen bg-[#0a0f24] flex items-center justify-center px-4 py-12">
+      <div className="bg-[#2d2f3a] p-8 rounded-2xl shadow-lg w-full max-w-xl">
+        <h1 className="text-white text-2xl font-bold mb-6 text-center">
+          E-mail Lookup
+        </h1>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label htmlFor="email" className="block text-white mb-2">
+              Enter your e-mail address
+            </label>
+            <input
+              type="email"
+              id="email"
+              className="w-full px-4 py-2 rounded-md bg-[#1a1c2c] text-white border border-gray-600 focus:outline-none"
+              placeholder="you@example.com"
+              value={email}
+              required
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
-        ))}
+
+          <div className="flex items-start text-white">
+            <input
+              type="checkbox"
+              id="consent"
+              className="mr-2 mt-1"
+              checked={isChecked}
+              onChange={() => setIsChecked(!isChecked)}
+            />
+            <label htmlFor="consent" className="text-sm">
+              I accept the{" "}
+              <a
+                href="/privacy-notice"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline text-blue-400"
+              >
+                Privacy Notice
+              </a>
+            </label>
+          </div>
+
+          <button
+            type="submit"
+            className={`w-full py-3 text-white font-semibold rounded-md ${
+              isChecked ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-500 cursor-not-allowed"
+            }`}
+            disabled={!isChecked}
+          >
+            Continue to Payment
+          </button>
+        </form>
       </div>
     </div>
   );
