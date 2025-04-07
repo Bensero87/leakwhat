@@ -1,1 +1,5 @@
-// Proper payment.js content as of 06.04.2025
+export default function Payment() {
+  return (
+    <div>Payment page is under construction.</div>
+  );
+}
