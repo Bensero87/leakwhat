@@ -62,7 +62,7 @@ export default function Home() {
         </div>
 
 {/* E-mail + Phone Lookup */}
-<div style={{ backgroundColor: '#4a4a4a', padding: '30px', borderRadius: '16px', width: '280px', textAlign: 'center' }}>
+<div style={{ backgroundColor: '#4a4a4a', padding: '30px', borderRadius: '16px', width: '250px', textAlign: 'center' }}>
   <h2 style={{ color: 'white', fontSize: '18px', marginBottom: '10px', whiteSpace: 'nowrap' }}>E-mail + Phone Lookup</h2>
   <p style={{ color: 'white', fontSize: '16px', marginBottom: '20px' }}>$9</p>
   <button
