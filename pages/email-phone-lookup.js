@@ -1,91 +1,80 @@
-// pages/email-phone-lookup.js
-
-import React, { useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 
 export default function EmailPhoneLookup() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [isChecked, setIsChecked] = useState(false);
+  const [accepted, setAccepted] = useState(false);
   const router = useRouter();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!isChecked) {
-      alert("Please accept the Privacy Notice to continue.");
-      return;
+  const handleContinue = () => {
+    if (accepted && email && phone) {
+      router.push("/payment");
     }
-    // Geçici yönlendirme - Ödeme entegrasyonu sonrası güncellenecek
-    router.push("/payment");
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0f24] flex items-center justify-center px-4 py-12">
-      <div className="bg-[#2d2f3a] p-8 rounded-2xl shadow-lg w-full max-w-xl">
-        <h1 className="text-white text-2xl font-bold mb-6 text-center">
-          E-mail + Phone Lookup
-        </h1>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="email" className="block text-white mb-2">
-              Enter your e-mail address
-            </label>
-            <input
-              type="email"
-              id="email"
-              className="w-full px-4 py-2 rounded-md bg-[#1a1c2c] text-white border border-gray-600 focus:outline-none"
-              placeholder="you@example.com"
-              value={email}
-              required
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="phone" className="block text-white mb-2">
-              Enter your phone number
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              className="w-full px-4 py-2 rounded-md bg-[#1a1c2c] text-white border border-gray-600 focus:outline-none"
-              placeholder="+1 234 567 890"
-              value={phone}
-              required
-              onChange={(e) => setPhone(e.target.value)}
-            />
-          </div>
+    <div style={{ backgroundColor: "#001F3F", minHeight: "100vh", color: "white", padding: "50px 20px", fontFamily: "Arial" }}>
+      <h1 style={{ textAlign: "center", fontSize: "28px", fontWeight: "bold" }}>E-mail + Phone Lookup</h1>
 
-          <div className="flex items-start text-white">
+      <div style={{ maxWidth: "400px", margin: "40px auto", textAlign: "center" }}>
+        <input
+          type="email"
+          placeholder="Enter e-mail"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          style={{
+            padding: "12px",
+            width: "100%",
+            borderRadius: "8px",
+            border: "none",
+            marginBottom: "20px",
+            fontSize: "16px"
+          }}
+        />
+
+        <input
+          type="tel"
+          placeholder="Enter phone number"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          style={{
+            padding: "12px",
+            width: "100%",
+            borderRadius: "8px",
+            border: "none",
+            marginBottom: "20px",
+            fontSize: "16px"
+          }}
+        />
+
+        <div style={{ marginBottom: "20px" }}>
+          <label>
             <input
               type="checkbox"
-              id="consent"
-              className="mr-2 mt-1"
-              checked={isChecked}
-              onChange={() => setIsChecked(!isChecked)}
+              checked={accepted}
+              onChange={() => setAccepted(!accepted)}
+              style={{ marginRight: "10px" }}
             />
-            <label htmlFor="consent" className="text-sm">
-              I accept the{" "}
-              <a
-                href="/privacy-notice"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline text-blue-400"
-              >
-                Privacy Notice
-              </a>
-            </label>
-          </div>
+            I accept the <a href="/privacy-notice" style={{ color: "#ccc", textDecoration: "underline" }}>Privacy Notice</a>
+          </label>
+        </div>
 
-          <button
-            type="submit"
-            className={`w-full py-3 text-white font-semibold rounded-md ${
-              isChecked ? "bg-blue-600 hover:bg-blue-700" : "bg-gray-500 cursor-not-allowed"
-            }`}
-            disabled={!isChecked}
-          >
-            Continue to Payment
-          </button>
-        </form>
+        <button
+          onClick={handleContinue}
+          disabled={!accepted || !email || !phone}
+          style={{
+            backgroundColor: "#888",
+            color: "white",
+            padding: "12px 24px",
+            border: "none",
+            borderRadius: "8px",
+            fontSize: "16px",
+            cursor: accepted && email && phone ? "pointer" : "not-allowed"
+          }}
+        >
+          Continue to Payment
+        </button>
       </div>
     </div>
   );
