@@ -1,1 +1,5 @@
-// Proper email-phone-lookup.js content as of 06.04.2025
+export default function EmailPhoneLookup() {
+  return (
+    <div>Email + Phone Lookup page is under construction.</div>
+  );
+}
