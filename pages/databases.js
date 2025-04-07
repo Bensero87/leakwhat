@@ -1,1 +1,5 @@
-// Proper databases.js content as of 06.04.2025
+export default function Databases() {
+  return (
+    <div>Databases page is under construction.</div>
+  );
+}
