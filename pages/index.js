@@ -61,25 +61,26 @@ export default function Home() {
           </button>
         </div>
 
-        {/* E-mail + Phone Lookup */}
-        <div style={{ backgroundColor: '#4a4a4a', padding: '30px', borderRadius: '16px', width: '250px', textAlign: 'center' }}>
-          <h2 style={{ color: 'white', marginBottom: '10px' }}>E-mail + Phone Lookup</h2>
-          <p style={{ color: 'white', fontSize: '16px', marginBottom: '20px' }}>$9</p>
-          <button
-            onClick={() => router.push('/email-phone-lookup')}
-            style={{
-              padding: '10px 20px',
-              backgroundColor: '#001F3F',
-              color: 'white',
-              border: 'none',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              fontWeight: 'bold'
-            }}
-          >
-            Choose this
-          </button>
-        </div>
+{/* E-mail + Phone Lookup */}
+<div style={{ backgroundColor: '#4a4a4a', padding: '30px', borderRadius: '16px', width: '280px', textAlign: 'center' }}>
+  <h2 style={{ color: 'white', fontSize: '18px', marginBottom: '10px', whiteSpace: 'nowrap' }}>E-mail + Phone Lookup</h2>
+  <p style={{ color: 'white', fontSize: '16px', marginBottom: '20px' }}>$9</p>
+  <button
+    onClick={() => router.push('/email-phone-lookup')}
+    style={{
+      padding: '10px 20px',
+      backgroundColor: '#001F3F',
+      color: 'white',
+      border: 'none',
+      borderRadius: '8px',
+      cursor: 'pointer',
+      fontWeight: 'bold'
+    }}
+  >
+    Choose this
+  </button>
+</div>
+
       </div>
 
       {/* Use Cases */}
