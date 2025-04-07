@@ -1,1 +1,5 @@
-// Proper phone-lookup.js content as of 06.04.2025
+export default function PhoneLookup() {
+  return (
+    <div>Phone Lookup page is under construction.</div>
+  );
+}
