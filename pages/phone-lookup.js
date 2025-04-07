@@ -1,5 +1,3 @@
-// pages/phone-lookup.js
-
 import { useState } from "react";
 import { useRouter } from "next/router";
 
@@ -9,58 +7,55 @@ export default function PhoneLookup() {
   const router = useRouter();
 
   const handleContinue = () => {
-    if (!accepted) {
-      alert("You must accept the Privacy Notice before continuing.");
-      return;
+    if (accepted && phone) {
+      router.push("/payment");
     }
-
-    // Ödeme sayfasına yönlendirme
-    router.push("/payment");
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0f24] text-white flex items-center justify-center px-4">
-      <div className="bg-gray-800 p-8 rounded-2xl shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-6 text-center">Phone Lookup</h1>
+    <div style={{ backgroundColor: "#001F3F", minHeight: "100vh", color: "white", padding: "50px 20px", fontFamily: "Arial" }}>
+      <h1 style={{ textAlign: "center", fontSize: "28px", fontWeight: "bold" }}>Phone Lookup</h1>
 
-        <label className="block mb-2 text-sm">Phone Number</label>
+      <div style={{ maxWidth: "400px", margin: "40px auto", textAlign: "center" }}>
         <input
-          type="text"
+          type="tel"
+          placeholder="Enter phone number"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
-          placeholder="+90 555 123 4567"
-          className="w-full px-4 py-2 mb-4 rounded-md bg-gray-700 text-white focus:outline-none"
+          style={{
+            padding: "12px",
+            width: "100%",
+            borderRadius: "8px",
+            border: "none",
+            marginBottom: "20px",
+            fontSize: "16px"
+          }}
         />
 
-        <div className="flex items-start mb-4">
-          <input
-            type="checkbox"
-            className="mt-1 mr-2"
-            checked={accepted}
-            onChange={() => setAccepted(!accepted)}
-          />
-          <label className="text-sm">
-            I accept the{" "}
-            <a
-              href="/privacy-notice"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline text-blue-400 hover:text-blue-300"
-            >
-              Privacy Notice
-            </a>
-            .
+        <div style={{ marginBottom: "20px" }}>
+          <label>
+            <input
+              type="checkbox"
+              checked={accepted}
+              onChange={() => setAccepted(!accepted)}
+              style={{ marginRight: "10px" }}
+            />
+            I accept the <a href="/privacy-notice" style={{ color: "#ccc", textDecoration: "underline" }}>Privacy Notice</a>
           </label>
         </div>
 
         <button
           onClick={handleContinue}
-          disabled={!phone || !accepted}
-          className={`w-full py-2 rounded-xl font-semibold ${
-            phone && accepted
-              ? "bg-white text-black hover:bg-gray-300"
-              : "bg-gray-600 text-gray-400 cursor-not-allowed"
-          }`}
+          disabled={!accepted || !phone}
+          style={{
+            backgroundColor: "#888",
+            color: "white",
+            padding: "12px 24px",
+            border: "none",
+            borderRadius: "8px",
+            fontSize: "16px",
+            cursor: accepted && phone ? "pointer" : "not-allowed"
+          }}
         >
           Continue to Payment
         </button>
