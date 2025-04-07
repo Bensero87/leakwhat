@@ -1,1 +1,5 @@
-// Proper faq.js content as of 06.04.2025
+export default function FAQ() {
+  return (
+    <div>FAQ page is under construction.</div>
+  );
+}
