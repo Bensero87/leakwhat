@@ -1,1 +1,5 @@
-// Proper email-lookup.js content as of 06.04.2025
+export default function EmailLookup() {
+  return (
+    <div>Email Lookup page is under construction.</div>
+  );
+}
