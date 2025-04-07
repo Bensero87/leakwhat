@@ -15,13 +15,13 @@ export default function Home() {
       <hr style={{ width: '80%', margin: '0 auto', borderColor: '#ccc' }} />
 
       {/* Başlık */}
-      <h1 style={{ textAlign: 'center', marginTop: '40px', fontSize: '26px', fontWeight: 'bold', color: 'white' }}>
+      <h1 style={{ textAlign: 'center', marginTop: '40px', fontSize: '26px', fontWeight: 'bold' }}>
         Make sure your credentials haven't been compromised!
       </h1>
 
-      {/* Hizmet Kutuları */}
+      {/* Ürün Kartları */}
       <div style={{ display: 'flex', justifyContent: 'center', gap: '40px', marginTop: '50px', flexWrap: 'wrap' }}>
-        {/* E-mail */}
+        {/* Email Lookup */}
         <div style={{ backgroundColor: '#4a4a4a', padding: '30px', borderRadius: '16px', width: '250px', textAlign: 'center' }}>
           <h2 style={{ color: 'white', marginBottom: '10px' }}>E-mail Lookup</h2>
           <p style={{ color: 'white', fontSize: '16px', marginBottom: '20px' }}>$5</p>
@@ -41,7 +41,7 @@ export default function Home() {
           </button>
         </div>
 
-        {/* Phone */}
+        {/* Phone Lookup */}
         <div style={{ backgroundColor: '#4a4a4a', padding: '30px', borderRadius: '16px', width: '250px', textAlign: 'center' }}>
           <h2 style={{ color: 'white', marginBottom: '10px' }}>Phone Lookup</h2>
           <p style={{ color: 'white', fontSize: '16px', marginBottom: '20px' }}>$5</p>
@@ -61,7 +61,7 @@ export default function Home() {
           </button>
         </div>
 
-        {/* E-mail + Phone */}
+        {/* E-mail + Phone Lookup */}
         <div style={{ backgroundColor: '#4a4a4a', padding: '30px', borderRadius: '16px', width: '250px', textAlign: 'center' }}>
           <h2 style={{ color: 'white', marginBottom: '10px' }}>E-mail + Phone Lookup</h2>
           <p style={{ color: 'white', fontSize: '16px', marginBottom: '20px' }}>$9</p>
@@ -80,6 +80,19 @@ export default function Home() {
             Choose this
           </button>
         </div>
+      </div>
+
+      {/* Use Cases */}
+      <h2 style={{ textAlign: 'center', fontSize: '22px', marginTop: '60px' }}>Use Cases</h2>
+      <div style={{ width: '80%', margin: '30px auto 60px auto', fontSize: '18px', lineHeight: '1.8', textAlign: 'center' }}>
+        <p><strong>Protecting Yourself:</strong> Find out if your data has been compromised as a result of any breach.</p>
+        <p><strong>Password Leakage:</strong> Find out if your password algorithm has been compromised as a result of any breach.</p>
+        <p><strong>Detecting Password Leakage:</strong> Find out if you need to change your password.</p>
+      </div>
+
+      {/* Contacts */}
+      <div style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px', marginBottom: '40px' }}>
+        Contacts: leakwhat@leakwhat.com
       </div>
     </div>
   );
