@@ -1,1 +1,0 @@
-// Ödeme sayfası
