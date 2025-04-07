@@ -1,98 +1,78 @@
-// pages/index.js
-
-import React from "react";
-import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Home() {
-  const router = useRouter();
-
-  const services = [
-    {
-      title: "E-mail Lookup",
-      price: "$5",
-      route: "/email-lookup",
-    },
-    {
-      title: "Phone Number Lookup",
-      price: "$5",
-      route: "/phone-lookup",
-    },
-    {
-      title: "E-mail + Phone Lookup",
-      price: "$9",
-      route: "/email-phone-lookup",
-    },
-  ];
-
-  const handleChoose = (route) => {
-    router.push(route);
-  };
-
   return (
-    <div className="min-h-screen bg-[#0a0f24] text-white px-4 py-10">
-      {/* Navbar */}
-      <nav className="flex justify-between items-center mb-4 border-b border-gray-500 pb-2">
-        <div className="text-xl font-bold">LeakWhat</div>
-        <div className="space-x-6 text-sm">
-          <a href="/" className="hover:underline">
-            Home
-          </a>
-          <a href="/databases" className="hover:underline">
-            Databases
-          </a>
-          <a href="/faq" className="hover:underline">
-            FAQ
-          </a>
-        </div>
+    <div style={{ backgroundColor: "#001F3F", minHeight: "100vh", color: "white", padding: "2rem" }}>
+      {/* Üst Menü */}
+      <nav style={{ display: "flex", gap: "2rem", borderBottom: "1px solid white", paddingBottom: "1rem", fontSize: "18px" }}>
+        <Link href="/" style={{ textDecoration: "none", color: "white" }}>Home</Link>
+        <Link href="/databases" style={{ textDecoration: "none", color: "white" }}>Databases</Link>
+        <Link href="/faq" style={{ textDecoration: "none", color: "white" }}>FAQ</Link>
       </nav>
 
-      {/* Headline */}
-      <h1 className="text-2xl font-bold text-white text-center mb-10">
+      {/* Başlık */}
+      <h1 style={{ marginTop: "2rem", fontWeight: "bold", fontSize: "26px" }}>
         Make sure your credentials haven't been compromised
       </h1>
 
-      {/* Services */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {services.map((service, idx) => (
-          <div
-            key={idx}
-            className="bg-gray-700 rounded-2xl p-6 shadow-lg flex flex-col justify-between"
-          >
-            <div>
-              <h2 className="text-xl font-bold mb-2">{service.title}</h2>
-              <p className="text-lg">{service.price}</p>
-            </div>
-            <button
-              onClick={() => handleChoose(service.route)}
-              className="mt-4 px-4 py-2 rounded-xl bg-white text-black hover:bg-gray-200 font-semibold"
-            >
-              Choose this
-            </button>
+      {/* Hizmet Kutuları */}
+      <div style={{ display: "flex", gap: "2rem", marginTop: "2rem", flexWrap: "wrap" }}>
+        {[
+          { title: "E-mail Lookup", price: "$5", link: "/email-lookup" },
+          { title: "Phone Lookup", price: "$5", link: "/phone-lookup" },
+          { title: "E-mail + Phone Lookup", price: "$9", link: "/email-phone-lookup" }
+        ].map((service, idx) => (
+          <div key={idx} style={{
+            backgroundColor: "#2e2e2e",
+            color: "white",
+            padding: "1.5rem",
+            borderRadius: "12px",
+            width: "260px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center"
+          }}>
+            <h2>{service.title}</h2>
+            <p style={{ fontSize: "22px", margin: "1rem 0" }}>{service.price}</p>
+            <Link href={service.link}>
+              <button style={{
+                backgroundColor: "#004080",
+                color: "white",
+                border: "none",
+                padding: "0.5rem 1rem",
+                borderRadius: "8px",
+                cursor: "pointer"
+              }}>
+                Choose this
+              </button>
+            </Link>
           </div>
         ))}
       </div>
 
-      {/* Use Cases */}
-      <div className="mt-16 max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-gray-700 text-white rounded-2xl p-6">
-            <h3 className="font-bold text-lg mb-2">Protecting Yourself</h3>
-            <p>Find out if your data has been compromised as a result of any breach.</p>
-          </div>
-          <div className="bg-gray-700 text-white rounded-2xl p-6">
-            <h3 className="font-bold text-lg mb-2">Password Leakage</h3>
-            <p>Find out if your password algorithm has been compromised as a result of any breach.</p>
-          </div>
-          <div className="bg-gray-700 text-white rounded-2xl p-6">
-            <h3 className="font-bold text-lg mb-2">Detecting Password Leakage</h3>
-            <p>Find out if you need to change your password.</p>
-          </div>
-        </div>
+      {/* Use Case Bölümü */}
+      <div style={{
+        marginTop: "4rem",
+        padding: "2rem",
+        backgroundColor: "#2e2e2e",
+        borderRadius: "12px",
+        width: "800px",
+        maxWidth: "100%",
+        marginLeft: "auto",
+        marginRight: "auto",
+        textAlign: "left"
+      }}>
+        <h2 style={{ fontWeight: "bold", fontSize: "20px", marginBottom: "1rem" }}>Use Cases</h2>
+        <ul style={{ paddingLeft: "1rem" }}>
+          <li><strong>Protecting Yourself:</strong> Find out if your data has been compromised as a result of any breach.</li>
+          <li><strong>Password Leakage:</strong> Find out if your password algorithm has been compromised as a result of any breach.</li>
+          <li><strong>Detecting Password Leakage:</strong> Find out if you need to change your password.</li>
+        </ul>
       </div>
 
       {/* Footer */}
-      <footer className="mt-16 text-center text-sm text-gray-400">
-        <p>Contact: <a href="mailto:leakwhat@leakwhat.com" className="underline">leakwhat@leakwhat.com</a></p>
+      <footer style={{ marginTop: "4rem", borderTop: "1px solid white", paddingTop: "1rem", fontSize: "14px" }}>
+        <p>Contacts: leakwhat@leakwhat.com</p>
       </footer>
     </div>
   );
