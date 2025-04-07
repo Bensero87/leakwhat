@@ -1,1 +1,0 @@
-// Telefon sorgulama sayfası
