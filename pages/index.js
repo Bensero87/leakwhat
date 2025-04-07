@@ -29,7 +29,7 @@ export default function Home() {
             onClick={() => router.push('/email-lookup')}
             style={{
               padding: '10px 20px',
-              backgroundColor: '#888',
+              backgroundColor: '#001F3F',
               color: 'white',
               border: 'none',
               borderRadius: '8px',
@@ -49,7 +49,7 @@ export default function Home() {
             onClick={() => router.push('/phone-lookup')}
             style={{
               padding: '10px 20px',
-              backgroundColor: '#888',
+              backgroundColor: '#001F3F',
               color: 'white',
               border: 'none',
               borderRadius: '8px',
@@ -69,7 +69,7 @@ export default function Home() {
             onClick={() => router.push('/email-phone-lookup')}
             style={{
               padding: '10px 20px',
-              backgroundColor: '#888',
+              backgroundColor: '#001F3F',
               color: 'white',
               border: 'none',
               borderRadius: '8px',
