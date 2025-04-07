@@ -16,15 +16,15 @@ export default function Home() {
       </h1>
 
       {/* Hizmet Kartları */}
-      <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "40px", margin: "40px auto", maxWidth: "900px" }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: "40px", flexWrap: "wrap", maxWidth: "1000px", margin: "0 auto" }}>
         {[
           { title: "E-mail Lookup", price: "$5", link: "/email-lookup" },
           { title: "Phone Lookup", price: "$5", link: "/phone-lookup" },
           { title: "E-mail + Phone Lookup", price: "$9", link: "/email-phone-lookup" },
         ].map((item, index) => (
           <div key={index} style={{
-            backgroundColor: "#ccc", color: "white",
-            borderRadius: "10px", padding: "30px", width: "250px", textAlign: "center", boxShadow: "0 0 10px rgba(0,0,0,0.2)"
+            backgroundColor: "#666", color: "white",
+            borderRadius: "10px", padding: "30px", width: "260px", textAlign: "center", boxShadow: "0 0 10px rgba(0,0,0,0.2)"
           }}>
             <h2>{item.title}</h2>
             <p style={{ fontSize: "24px", margin: "10px 0" }}>{item.price}</p>
@@ -38,15 +38,26 @@ export default function Home() {
         ))}
       </div>
 
-      {/* Use Cases */}
-      <div style={{ margin: "80px auto 60px", textAlign: "center", padding: "0 20px", maxWidth: "900px" }}>
-        <p style={{ fontSize: "20px", marginBottom: "15px" }}>
-          <strong>Protecting Yourself:</strong> Find out if your data has been compromised as a result of any breach.
+      {/* Use Cases Başlığı */}
+      <h2 style={{ textAlign: "center", marginTop: "80px", fontSize: "26px" }}>Use Cases</h2>
+
+      {/* Use Cases Açıklamaları */}
+      <div style={{
+        margin: "30px auto 60px",
+        maxWidth: "800px",
+        padding: "0 20px",
+        fontSize: "20px",
+        lineHeight: "1.6"
+      }}>
+        <p style={{ marginBottom: "20px" }}>
+          <strong>Protecting Yourself:</strong> Find out if your data has been compromised as a result
+          of any breach.
         </p>
-        <p style={{ fontSize: "20px", marginBottom: "15px" }}>
-          <strong>Password Leakage:</strong> Find out if your password algorithm has been compromised as a result of any breach.
+        <p style={{ marginBottom: "20px" }}>
+          <strong>Password Leakage:</strong> Find out if your password algorithm has been compromised
+          as a result of any breach.
         </p>
-        <p style={{ fontSize: "20px" }}>
+        <p>
           <strong>Detecting Password Leakage:</strong> Find out if you need to change your password.
         </p>
       </div>
