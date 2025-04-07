@@ -1,78 +1,59 @@
-import Link from "next/link";
-
 export default function Home() {
   return (
-    <div style={{ backgroundColor: "#001F3F", minHeight: "100vh", color: "white", padding: "2rem" }}>
+    <div style={{ backgroundColor: "#001F3F", minHeight: "100vh", color: "white", fontFamily: "Arial, sans-serif" }}>
       {/* Üst Menü */}
-      <nav style={{ display: "flex", gap: "2rem", borderBottom: "1px solid white", paddingBottom: "1rem", fontSize: "18px" }}>
-        <Link href="/" style={{ textDecoration: "none", color: "white" }}>Home</Link>
-        <Link href="/databases" style={{ textDecoration: "none", color: "white" }}>Databases</Link>
-        <Link href="/faq" style={{ textDecoration: "none", color: "white" }}>FAQ</Link>
-      </nav>
+      <header style={{ padding: "20px 0", textAlign: "center", borderBottom: "1px solid #ccc" }}>
+        <nav style={{ display: "flex", justifyContent: "center", gap: "60px", fontWeight: "bold", fontSize: "18px" }}>
+          <a href="/" style={{ color: "white", textDecoration: "none" }}>Home</a>
+          <a href="/databases" style={{ color: "white", textDecoration: "none" }}>Databases</a>
+          <a href="/faq" style={{ color: "white", textDecoration: "none" }}>FAQ</a>
+        </nav>
+      </header>
 
       {/* Başlık */}
-      <h1 style={{ marginTop: "2rem", fontWeight: "bold", fontSize: "26px" }}>
-        Make sure your credentials haven't been compromised
+      <h1 style={{ textAlign: "center", fontWeight: "bold", fontSize: "28px", margin: "40px 0" }}>
+        Make sure your credentials haven't been compromised!
       </h1>
 
-      {/* Hizmet Kutuları */}
-      <div style={{ display: "flex", gap: "2rem", marginTop: "2rem", flexWrap: "wrap" }}>
+      {/* Hizmet Kartları */}
+      <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "40px", margin: "40px auto", maxWidth: "900px" }}>
         {[
           { title: "E-mail Lookup", price: "$5", link: "/email-lookup" },
           { title: "Phone Lookup", price: "$5", link: "/phone-lookup" },
-          { title: "E-mail + Phone Lookup", price: "$9", link: "/email-phone-lookup" }
-        ].map((service, idx) => (
-          <div key={idx} style={{
-            backgroundColor: "#2e2e2e",
-            color: "white",
-            padding: "1.5rem",
-            borderRadius: "12px",
-            width: "260px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center"
+          { title: "E-mail + Phone Lookup", price: "$9", link: "/email-phone-lookup" },
+        ].map((item, index) => (
+          <div key={index} style={{
+            backgroundColor: "#ccc", color: "white",
+            borderRadius: "10px", padding: "30px", width: "250px", textAlign: "center", boxShadow: "0 0 10px rgba(0,0,0,0.2)"
           }}>
-            <h2>{service.title}</h2>
-            <p style={{ fontSize: "22px", margin: "1rem 0" }}>{service.price}</p>
-            <Link href={service.link}>
-              <button style={{
-                backgroundColor: "#004080",
-                color: "white",
-                border: "none",
-                padding: "0.5rem 1rem",
-                borderRadius: "8px",
-                cursor: "pointer"
-              }}>
-                Choose this
-              </button>
-            </Link>
+            <h2>{item.title}</h2>
+            <p style={{ fontSize: "24px", margin: "10px 0" }}>{item.price}</p>
+            <a href={item.link} style={{
+              backgroundColor: "#001F3F", color: "white", padding: "10px 20px",
+              borderRadius: "5px", textDecoration: "none", fontWeight: "bold", display: "inline-block", marginTop: "15px"
+            }}>
+              Choose this
+            </a>
           </div>
         ))}
       </div>
 
-      {/* Use Case Bölümü */}
-      <div style={{
-        marginTop: "4rem",
-        padding: "2rem",
-        backgroundColor: "#2e2e2e",
-        borderRadius: "12px",
-        width: "800px",
-        maxWidth: "100%",
-        marginLeft: "auto",
-        marginRight: "auto",
-        textAlign: "left"
-      }}>
-        <h2 style={{ fontWeight: "bold", fontSize: "20px", marginBottom: "1rem" }}>Use Cases</h2>
-        <ul style={{ paddingLeft: "1rem" }}>
-          <li><strong>Protecting Yourself:</strong> Find out if your data has been compromised as a result of any breach.</li>
-          <li><strong>Password Leakage:</strong> Find out if your password algorithm has been compromised as a result of any breach.</li>
-          <li><strong>Detecting Password Leakage:</strong> Find out if you need to change your password.</li>
-        </ul>
+      {/* Use Cases */}
+      <div style={{ margin: "80px auto 60px", textAlign: "center", padding: "0 20px", maxWidth: "900px" }}>
+        <p style={{ fontSize: "20px", marginBottom: "15px" }}>
+          <strong>Protecting Yourself:</strong> Find out if your data has been compromised as a result of any breach.
+        </p>
+        <p style={{ fontSize: "20px", marginBottom: "15px" }}>
+          <strong>Password Leakage:</strong> Find out if your password algorithm has been compromised as a result of any breach.
+        </p>
+        <p style={{ fontSize: "20px" }}>
+          <strong>Detecting Password Leakage:</strong> Find out if you need to change your password.
+        </p>
       </div>
 
-      {/* Footer */}
-      <footer style={{ marginTop: "4rem", borderTop: "1px solid white", paddingTop: "1rem", fontSize: "14px" }}>
-        <p>Contacts: leakwhat@leakwhat.com</p>
+      {/* Contacts */}
+      <footer style={{ textAlign: "center", padding: "40px 0", fontSize: "20px", fontWeight: "bold" }}>
+        Contacts: leakwhat@leakwhat.com
       </footer>
     </div>
   );
