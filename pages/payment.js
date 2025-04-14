@@ -1,99 +1,81 @@
-// pages/payment.js
+import React from 'react';
 
-import React, { useState } from "react";
-
-export default function PaymentPage() {
-  const [accepted, setAccepted] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (accepted) {
-      alert("This is a placeholder. PayTR integration will be added.");
-    } else {
-      alert("You must accept the Privacy Notice to continue.");
-    }
-  };
-
+export default function Payment() {
   return (
-    <div className="min-h-screen bg-[#0a0f24] text-white px-6 py-10">
-      <div className="max-w-xl mx-auto bg-gray-700 rounded-2xl p-8 shadow-lg">
-        <h1 className="text-2xl font-bold text-center mb-6">Payment Details</h1>
+    <div style={{ backgroundColor: '#001F3F', minHeight: '100vh', color: 'white', padding: '2rem' }}>
+      <h1 style={{ textAlign: 'center', fontSize: '2rem', marginBottom: '2rem' }}>Secure Payment</h1>
+      
+      <div style={{ maxWidth: '400px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <input
+          type="text"
+          placeholder="Card Number"
+          style={{
+            padding: '12px',
+            borderRadius: '8px',
+            border: 'none',
+            outline: 'none',
+            fontSize: '1rem',
+            color: '#000'
+          }}
+        />
+        <input
+          type="text"
+          placeholder="MM"
+          style={{
+            padding: '12px',
+            borderRadius: '8px',
+            border: 'none',
+            outline: 'none',
+            fontSize: '1rem',
+            color: '#000'
+          }}
+        />
+        <input
+          type="text"
+          placeholder="YY"
+          style={{
+            padding: '12px',
+            borderRadius: '8px',
+            border: 'none',
+            outline: 'none',
+            fontSize: '1rem',
+            color: '#000'
+          }}
+        />
+        <input
+          type="text"
+          placeholder="CVV"
+          style={{
+            padding: '12px',
+            borderRadius: '8px',
+            border: 'none',
+            outline: 'none',
+            fontSize: '1rem',
+            color: '#000'
+          }}
+        />
 
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <div>
-            <label className="block text-sm mb-1">Card Number</label>
-            <input
-              type="text"
-              className="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none"
-              placeholder="1234 5678 9012 3456"
-              required
-            />
-          </div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <input type="checkbox" id="terms" />
+          <label htmlFor="terms" style={{ marginLeft: '0.5rem' }}>
+            I have read and accept the <a href="/privacy-notice" style={{ color: '#00BFFF' }}>Privacy Notice</a>.
+          </label>
+        </div>
 
-          <div className="flex space-x-4">
-            <div className="flex-1">
-              <label className="block text-sm mb-1">Expiry Month</label>
-              <input
-                type="text"
-                className="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none"
-                placeholder="MM"
-                required
-              />
-            </div>
-            <div className="flex-1">
-              <label className="block text-sm mb-1">Expiry Year</label>
-              <input
-                type="text"
-                className="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none"
-                placeholder="YY"
-                required
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-sm mb-1">CVV</label>
-            <input
-              type="text"
-              className="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none"
-              placeholder="123"
-              required
-            />
-          </div>
-
-          <div className="flex items-start space-x-2">
-            <input
-              type="checkbox"
-              checked={accepted}
-              onChange={(e) => setAccepted(e.target.checked)}
-              className="mt-1"
-            />
-            <label className="text-sm">
-              I have read and accept the{" "}
-              <a
-                href="/privacy-notice"
-                className="underline text-blue-400 hover:text-blue-300"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Privacy Notice
-              </a>
-              .
-            </label>
-          </div>
-
-          <button
-            type="submit"
-            disabled={!accepted}
-            className={`w-full py-2 mt-4 rounded-xl font-semibold ${
-              accepted
-                ? "bg-white text-black hover:bg-gray-300"
-                : "bg-gray-500 text-gray-300 cursor-not-allowed"
-            }`}
-          >
-            Proceed to Payment
-          </button>
-        </form>
+        <button
+          style={{
+            marginTop: '1rem',
+            padding: '14px',
+            border: 'none',
+            borderRadius: '8px',
+            backgroundColor: '#00BFFF',
+            color: 'white',
+            fontSize: '1rem',
+            cursor: 'pointer'
+          }}
+        >
+          Complete Payment
+        </button>
       </div>
     </div>
   );
